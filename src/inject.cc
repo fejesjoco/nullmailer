@@ -274,6 +274,9 @@ void setup_from()
   mystring name = getenv("NULLMAILER_NAME");
   if(!name) name = getenv("MAILNAME");
   if(!name) name = getenv("NAME");
+  // TODO: is this the correct place to add a From header when invoked by mail(1)?
+  // TODO: figure out the name from getpwent?
+  if(!name) name = user;
 
   if(use_name_address_style) {
     if(!name) from = "<" + user + "@" + host + ">";
